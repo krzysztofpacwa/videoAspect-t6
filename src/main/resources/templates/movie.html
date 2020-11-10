@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Movie List</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+                            integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
+          crossorigin="anonymous">
+</head>
+<body>
+<h2> Movie List & Send Email</h2>
+
+<div>
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Title</th>
+            <th scope="col">Year of Production</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="movie: ${movieList}">
+            <td th:text="${movie.getTitle()}"> </td>
+            <td th:text="${movie.getYearOfProduction()}"> </td>
+        </tr>
+        <tbody>
+    </table>
+    <form class="form-row align-items-center" th:action="@{/}" th:object="${newMovie}" method="post">
+        <td> <input type="text" th:field="*{title}" placeholder="title"></td>
+        <td> <input type="text" th:field="*{yearOfProduction}" placeholder="year of production"></td>
+        <td> <button class="btn btn-dark"> Add Movie </button></td>
+    </form>
+
+</div>
+</body>
+</html>
